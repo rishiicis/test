@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>scroller</title>
+<style>
+.scrollToTop {
+    background: #205db1 none repeat scroll 0 0;
+    bottom: 50px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+    color: #ffffff !important;
+    font-size: 12px;
+    font-weight: bold;
+    padding: 1em;
+    position: fixed;
+    right: 10px;
+    text-decoration: none;
+}
+</style>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+</head>
+<body>
+<div style="height:1200px;">
+ABc
+</div>
+<a id="backToTop" class="scrollToTop" href="#top" style="display: none;">Top</a>
+<script>
+    //this is for floating TOP link
+    $(document).ready(function () {
+        var offset = 50;
+        $(document).scroll(function () {
+            if ($(this).scrollTop() > offset) {
+                $('.scrollToTop').fadeIn();
+            } else {
+                $('.scrollToTop').fadeOut();
+            }
+        });
+        $('.scrollToTop').click(function () {
+            $('html, body').animate({ scrollTop: 0 }, 800);
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
