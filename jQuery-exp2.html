@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Examples2</title>
+<script src="js/jquery-1.10.2.js"></script>
+<style>
+.first, .second{ height:15px; width:120px; border:1px solid #F00; margin:10px; padding:5px;}
+.div1 { height: 50px; width: 50px; float: left; margin-right: 10px; display: none; background-color: #090; }
+.li-pre{ color:green;}
+.li-nxt{ color:red;}
+.li-blue{color:blue;}
+.redblue{color:green;}
+.redbl{color:red;}
+.blue{color:blue;}
+.ylo{color:#CC0000;}
+</style>
+</head>
+<body>
+<script>
+$(document).ready(function(e) {
+    $('.redblue,[class^="red"],[class$="lue"]').addClass("ylo");
+});
+</script>
+<div>
+<div class="redblue">Green color</div>
+<div class="redbl">red color</div>
+<div class="blue">blue color</div>
+</div>
+<!----------------------on click previous Li in different and next in differnt color----------------------->
+<h4>onclick of Li pre and next in differnt color</h4>
+<ul id="undefined">
+<li>Link 1</li>
+<li>Link 2</li>
+<li>Link 3</li>
+<li>Link 4</li>
+<li>Link 5</li>
+</ul>
+<button id="addLi">add Li</button>
+<script>
+$(document).on("click", "li", function() {
+$("li").removeClass(" li-nxt li-pre li-blue");
+	$(this).prevAll().addClass("li-pre");
+	$(this).nextAll().addClass("li-nxt");
+	$(this).addClass("li-blue");
+});
+var x = 5;
+$(document).on("click", "#addLi", function() {
+	x++;
+	$("#undefined").append("<li>Link " + x +"</li>");
+});
+</script>
+<!-----------------------------------radio button--------------------------------------------------------------------->
+<h4>on click of radio button change box color</h4>
+<input type="radio" name="radio" id="abc"/>Mr <input type="radio" name="radio" id="xyz"/>Mrs
+<div class="first">First</div>
+<div class="second">Second</div>
+<script type="text/javascript">
+$(document).on('click', function(e) {
+	var x = e.target;
+	if($(x).is($('#abc'))){
+		$(".first").css({background:"yellow"});
+		$(".second").css({background:"orange"});
+		}
+	else if($(x).is($('#xyz'))){
+		$(".first").css({background:"pink"});
+		$(".second").css({background:"green"});
+		}
+});
+</script>
+<!----------------------------------------onBlur or onChange------------------------------>
+<h4>which execute first onBlur or onChange</h4>
+<input type="text" placeholder="Name" id="input">
+<script>
+$(document).ready(function(e) {
+$('#input').keyup(function(){
+    $('#input').val($(this).val().toUpperCase());
+}); 
+$("#input").on("change", function() {
+	alert("on change");
+});    
+$("#input").on("blur", function() {
+	alert("on blur");
+});    
+});
+</script>
+<!----------------------------------------Promise method------------------------------>
+<h4>Promise method</h4>
+<button id="button1">Check</button>
+<div><p>Ready...</p>
+<div class="div1"></div>
+<div class="div1"></div>
+<div class="div1"></div>
+<div class="div1"></div></div>
+<script>
+$( "#button1" ).on( "click", function() {
+  $( "p" ).append( "Started..." );
+  $( ".div1" ).each(function( i ) {
+    $( this ).fadeIn().fadeOut( 1000 * ( i + 1 ) );
+  });
+  $( ".div1" ).promise().done(function() {
+    $( "p" ).append( " Finished! " );
+  });
+});
+</script>
+<!----------------------------------------On Click Table Row show hide------------------------------>
+<style>
+#tbl tr td { min-width:150px;}
+#tbl { overflow-x:scroll; margin-bottom:50px; width:400px;}
+</style>
+<h4>On Click Table Row show hide</h4>
+<button id="show">Show More</button>
+<button id="hide">Show Less</button>
+<div id="tbl">
+<table width="100%" border="1">
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+  <tr>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+    <td>&nbsp;</td>
+  </tr>
+</table>
+</div>
+<script>
+$(document).ready(function() {
+    $("#tbl tr:nth-child(4)").nextAll().hide();
+       $("#hide").hide(); 
+	$(document).on('click', '#show', function() {
+       $("#tbl tr").show(); 
+       $("#show").hide(); 
+       $("#hide").show(); 
+    });
+	$(document).on('click', '#hide', function() {
+       $("#tbl tr:nth-child(4)").nextAll().hide(); 
+       $("#hide").hide(); 
+       $("#show").show(); 
+    });
+});
+</script>
+
+</body>
+</html>
+
