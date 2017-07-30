@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Examples</title>
+<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+<style>
+.main_wrap{ margin: 0 auto; max-width: 800px; display:table;}
+.item{ width:135px; height:80px; border:1px solid #F00; float:left; margin:10px;}
+.loadmore{ margin:10px; clear:both;}
+#qty{ color:red; text-align:center; display:block;}
+@media (max-width:480px){
+.main_wrap{ max-width: 480px;}	
+	}
+@media (min-width: 481px) and (max-width: 767px){
+	.main_wrap{ max-width: 767px;}	
+	}
+</style>
+</head>
+<body>
+<script>
+$(document).ready(function() {
+	$(".item:eq(4)").nextAll().hide();
+	$(".loadBtn").on('click',function(){
+	var x = $(".item:hidden").length;
+	if(x > 0){
+		$(".item:hidden").slice(0,5).show();
+	}
+	else if(x == 0){
+		$(".loadBtn").hide();
+		$("#qty").text("No More Item");
+	}
+});
+});
+</script>
+<script>
+$(document).ready(function() {
+	var boxHT = $(".item").map( function(){
+		return $(this).height();
+	}).get();
+	var maxHT = Math.max.apply(null,boxHT);
+	//alert("max-height:"+maxHT+"px, ok to apply");
+	$(".item").css({"height":maxHT+"px"});
+  });
+</script>
+<div class="main_wrap">
+	<div class="item_wrap">
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item" style="height:90px;">4</div>
+        <div class="item">5</div>
+        <div class="item">6</div>
+        <div class="item">7</div>
+        <div class="item">8</div>
+        <div class="item">9</div>
+        <div class="item">10</div>
+        <div class="item">11</div>
+        <div class="item">12</div>
+        <div class="item">13</div>
+        <div class="item">14</div>
+        <div class="item">15</div>
+        <div class="item">16</div>
+        <div class="item">17</div>
+    </div>
+    <div class="loadmore"> 
+        <button class="loadBtn">Load more</button> 
+        <span id="qty"></span>
+    </div>
+</div>
+</body>
+</html>
