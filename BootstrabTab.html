@@ -1,0 +1,213 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bootstrap Menu || Tab</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
+<script>
+$(function(){
+$('#myModal').on('show.bs.modal', function (event) {
+   $("#login_btns").show();
+  $("#regForm, #signinForm").hide();
+});
+
+$(document).on('click', function(e) {
+	var xF = e.target;
+	if($(xF).is($("#Log_in"))){
+		$("#signinForm").show();
+		$("#regForm, #login_btns").hide();
+	}
+	else if($(xF).is($("#Sign_up"))){
+		$("#regForm").show();
+		$("#signinForm, #login_btns").hide();
+	}
+});
+$('#btnPrev').click(function (e) {
+   var currentTabId= $(this).data('tabid');
+   var tabLenth = $('#myTabs li').length-1;
+   if(currentTabId==0){
+      $('#myTabs li:eq(0) a').tab('show');
+	  $('#btnPrev').data('tabid', 0);
+      $('#btnNext').data('tabid', 1); 
+   }else if(currentTabId>0 && currentTabId<=tabLenth ){
+      $('#myTabs li:eq('+ currentTabId +') a').tab('show'); 
+	  $('#btnPrev').data('tabid', currentTabId-1);
+      $('#btnNext').data('tabid', currentTabId);
+   }
+  e.preventDefault();
+});
+
+$('#btnNext').click(function (e) {
+   var currentTabId= $(this).data('tabid');
+   var tabLenth = $('#myTabs li').length-1;
+   if(currentTabId < tabLenth){
+      $('#myTabs li:eq('+ currentTabId +') a').tab('show'); 
+$('#myTabs li:has(a[aria-expanded="true"])').prevAll().addClass("final");
+	  $('#btnPrev').data('tabid', currentTabId-1);
+      $('#btnNext').data('tabid', currentTabId+1);	 
+   }else if(currentTabId==tabLenth){
+      $('#myTabs li:eq('+ tabLenth +') a').tab('show');
+$('#myTabs li:has(a[aria-expanded="true"])').prevAll().addClass("final");      
+	  $('#btnPrev').data('tabid', tabLenth-1);
+      $('#btnNext').data('tabid', tabLenth);       	  
+   }
+  e.preventDefault();
+});
+$('#myTabs a').click(function (e) {
+  e.preventDefault()
+  $(this).tab('show')
+});
+});
+</script>
+<style>
+div.cls {
+	background:#ededed;
+}
+.col-half-offset {
+	margin-left:4.166666667%
+}
+.navbar-inverse.top-nav {
+	min-height: auto;
+}
+.navbar-inverse.top-nav li a {
+	color:#fff;
+	font-weight:bold;
+}
+.navbar-inverse.top-nav li a:hover {
+	background-color:#0000FF;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:red;}
+.nav-tabs > li.final > a{background-color:green; color:#fff;}
+</style>
+</head>
+
+<body>
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse top-nav">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+      <a class="navbar-brand" href="#">Brand</a> </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav ">
+        <li class="active"><a href="#">Link </span></a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+        <li><a href="#">Link</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse --> 
+  </div>
+  <!-- /.container-fluid --> 
+</nav>
+<section class="container" style="padding-top:60px;">
+<!-- Nav tabs -->
+  <ul class="nav nav-tabs" role="tablist" id="myTabs">
+    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
+    <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
+    <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+    <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+  </ul>
+<!-- Tab panes -->
+  <div class="tab-content">
+    <div role="tabpanel" class="tab-pane active" id="home">home</div>
+    <div role="tabpanel" class="tab-pane" id="profile">profile</div>
+    <div role="tabpanel" class="tab-pane" id="messages">messages</div>
+    <div role="tabpanel" class="tab-pane" id="settings">settings</div>
+  </div>
+<!-- Tab panes End Here-->
+  <div class="btnWrap">
+	<button id="btnPrev" class="btn btn-warning" type="button" data-tabid="0">Previous</button>
+	<button id="btnNext" class="btn btn-success" type="button" data-tabid="1">Save and Next</button>
+	<button id="done-btn" class="btn btn-success" type="button" data-toggle="modal" data-target="#myModal">Save and Done</button>
+</div>
+<div class="container">
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Login</h4>
+          </div>
+          <div class="modal-body">
+            <div class="container-fluid" id="login_btns">
+              <button style="padding:10px; padding-right: 20px;" class="btn  btn-xlarge btn-facebook signbtn pull-left" id="fb-auth"><i class="fa fa-2x fa-facebook"></i> Connect with Facebook</button>
+              <br>
+              <button style="padding:10px; padding-right: 20px;" class="btn  btn-xlarge btn-google-plus signbtn pull-left" id="signinButton" onclick="glogin()"><i class="fa fa-2x fa-google-plus"></i> Connect with Google&nbsp;</button>
+              <br>
+              <button style="padding:10px; padding-right: 20px; " class="btn btn-xlarge btn-linkedin signbtn pull-left" id="in_auth" onclick="onLinkedInLoad()"><i class="fa fa-2x fa-linkedin"></i> Connect with Linkedin</button>
+            <div class="text-left">
+				<span class="text-muted">SignUp or Login with Other</span>
+				</div>
+				<button id="Sign_up" class="btn btn-success pull-left" type="button">Signup</button>
+				<button id="Log_in" class="btn btn-success pull-left" type="button" style="margin-left:20px;">Login</button>
+			</div>
+			<!-- Login Form -->
+			<div class="container-fluid" id="signinForm" style="display:none;">
+			  <form>
+				<div class="form-group">
+				  <label for="email_1">Email address:</label>
+				  <input class="form-control" id="email_1" required="" type="email">
+				</div>
+				<div class="form-group">
+				  <label for="pwd_1">Password:</label>
+				  <input class="form-control" id="pwd_1" required="" type="password">
+				</div>
+				<button type="submit" class="btn btn-info">Login</button>
+			  </form>
+			</div>
+			<!-- SignUp Form -->
+			<div class="container-fluid" id="regForm" style="display:none;">
+			  <form>
+				<div class="form-group">
+				  <label for="email_1">Email address:</label>
+				  <input class="form-control" id="email_1" required="" type="email">
+				</div>
+				<button type="submit" class="btn btn-info">Login</button>
+			  </form>
+			</div>			
+          </div>
+          <div class="modal-footer">
+            Footer
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+   
+<style>
+.btn-xlarge {
+    border-radius: 0;
+    font-size: 17.5px;
+    margin: 10px 0;
+    padding: 10px 26px;
+}
+.btn-facebook {
+    background-color: #2b4b90;
+    background-image: linear-gradient(to bottom, #3b5998, #133783);
+    background-repeat: repeat-x;
+    color: #ffffff;
+}
+.btn-google-plus {
+    background-color: #d34332;
+    background-image: linear-gradient(to bottom, #dd4b39, #c53727);
+    background-repeat: repeat-x;
+    color: #ffffff;
+}
+.btn-linkedin {
+    background-color: #60a9ce;
+    background-image: linear-gradient(to bottom, #73b8db, #4393bb);
+    background-repeat: repeat-x;
+    color: #ffffff;
+}
+</style>
+</section>
+</body>
+</html>
