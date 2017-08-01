@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=divice-width, initial-scale=1">
+<title>Examples</title>
+<script src="js/jquery-1.10.2.js"></script>
+<style>
+.test { border: 1px inset red; padding-bottom:10px;}
+.resize{ width:200px; height:100px; border:1px solid #F00;}
+.abc{ background:#FF0000;}
+.xyz{ background:#0F0;}
+</style>
+</head>
+<body>
+<h4>Add class to parent element by child element</h4>
+<div class="main">
+  <p>This is a paragraph inside a div element.  </p>
+  <span>This is a span element</span> 
+  <input type="text"/>
+</div>
+<script>
+$(document).ready(function() {
+$( "div:has(p, span)" ).addClass( "test" );
+$( '.main:has(input[type="text"])').css({width:"300px" , height:"auto"});
+});
+</script>
+<!-- -------------------------------------------------------Click count JQuery------------ -->
+<h4>Click count JQuery</h4>
+<script>
+var count=0;
+$(document).ready(function(){
+$("#update").click( function() {
+  count++;  
+$("#counter").text("My current count is:" + count).css({color:"red"});
+    });
+});
+</script>
+<button id="update" type = "button">Click Count</button>
+<div id="counter">My current count is:</div>
+<!-- ---------------On click of button Change image cordinate or increase CSS value----------->
+<h4>On click of button Change image cordinate or increase CSS value</h4>
+<button id="increase" type = "button">Click</button>
+<div id="change" style="background:green; width:150px; height:50px; position:relative;"></div>
+<script>
+var x=0;
+var y=0;
+$(document).ready(function(){
+$("#increase").on('click', function() {
+  x=x+5; 
+  y=y+100; 
+$("#change").css({top:x +"px", left:y +"px",});
+	if(left <= $(window).width())
+	{
+		x=x-5;
+		y=y-100;
+	};
+    });
+});
+</script>
+<!-- ----------------------div hegiht width resize through input box--------------->
+<h4>div hegiht width resize through input box</h4>
+<div class="resize">Resize The container</div>
+<input type="text" placeholder="width" class="set-w" />
+<input type="text" placeholder="height" class="set-h" /><br />
+<button id="size" class="abc">Resize</button>
+<script>
+$(document).ready(function(e) {
+    $("#size").on('click', function(){
+	var h=$(".set-h").val();
+	var w=$(".set-w").val();
+	$(".resize").css({width:w, height:h,});
+	$("#size").removeClass("abc").addClass("xyz");
+	});
+});
+</script>
+</body>
+</html>
