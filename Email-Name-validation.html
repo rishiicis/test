@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Email, Name Validation</title>
+</head>
+
+<body>
+<script>
+function Fvalidate() {
+    var x = document.forms["LoginForm"]["email"].value;
+    var y = document.forms["LoginForm"]["name"].value;
+    var F_at = x.indexOf("@");
+    var F_dot = x.lastIndexOf(".");
+    if(y.length < 2){
+   		alert("Fill Name");
+    }
+    else if (F_at<1 || F_dot<F_at+2 || F_dot+2>=x.length) {
+		alert("Not a valid e-mail address");
+    }
+	else{
+		alert("Form Submit Successfully");
+	}
+	return false;
+}
+function clr(){
+	document.getElementById("form_id").reset();
+}
+</script>
+<div style="max-width:800px; margin:auto;">
+<h2>Email and Name atleast 2char validation</h2>
+<div id="getN"></div>
+<form method="post" name="LoginForm" id="form_id" onSubmit="return Fvalidate();">
+<div class="row">
+    <label for="Fname">Name</label>
+    <input type="text" name="name" id="Fname"/>
+    <!--<input type="text" name="name" id="Fname" pattern=".{3,10}"/>-->
+</div>
+<div class="row">
+    <label for="Femail">Email</label>
+    <input type="email" name="email" id="Femail"/>
+</div>
+<div class="row">
+    <button type="submit">Submit</button>
+</div>
+<!--<button onclick="Fvalidate()">Submit</button>
+<button onclick="clr()">Reset</button>
+<input type="button" value="Submit" onclick="Fvalidate()"/>
+<input type="button" value="Reset" onclick="clr()"/>-->
+</form>
+</div>
+</body>
+</html>
