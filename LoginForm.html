@@ -1,0 +1,121 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Login Form Validation</title>
+<style type="text/css">
+/* Below line is used for online Google font */
+/*@import url(https://fonts.googleapis.com/css?family=Raleway);*/
+body{margin:0; padding:0; font-family:Arial, sans-serif; font-size:12px;}
+.main{ width:300px; padding:10px 25px; border: 1px solid gray; border-radius: 10px; margin:10px auto; }
+#password, #username { width:95%; height: 30px; padding:5px; margin:5px 0 25px 0; border:1px solid #ccc; color:#4f4f4f; border-radius:5px; }
+label{ color: #464646; font-size: 14px; cursor:pointer;}
+.valid{ color:green; }
+#submitBtn, #clrBtn{ font-size:16px; background:linear-gradient(#ffbc00 5%, #ffdd7f 100%); border:1px solid #e5a900; color:red; font-weight: bold; cursor: pointer; width: 100%; border-radius: 5px; padding: 10px 0; outline:none; margin:0 0 10px 0;}
+#submit:hover{ background: linear-gradient(#ffdd7f 5%, #ffbc00 100%);}
+</style>
+</head>
+<body>
+<div class="main">
+<h2>Check the given number 0-10</h2>
+<div id="getN"></div>
+<script type="text/javascript">
+function check(){
+	var numbr = document.getElementById("GiveNumber").value;
+	//document.getElementById("getN").innerHTML= numbr;
+	if( numbr >0  &&  numbr <= 10){
+		alert(numbr + " valid Num.");
+	}else{ 
+		alert(numbr + " invalid Num.");
+	}
+	}
+</script>
+<form method="post" name="LoginForm">
+    <label for="GiveNumber">Give: 0-10</label>
+    <input type="text" name="GiveNumber" id="GiveNumber"/>
+    <input type="button" value="Validate" id="val" onclick="check()"/>
+</form>
+</div>
+<div class="main">
+<h2>Login Form</h2>
+<script type="text/javascript">
+var attempt = 3;
+function validate(){
+	var usrName = document.getElementById("username").value;
+	var pasWd = document.getElementById("password").value;
+	if( usrName == "User123" && pasWd == "Password123")
+	{
+	window.location = "animate-Modal.html";
+	}else{
+	attempt --;
+	alert( attempt +" attempt Left.");
+	if(attempt==0){
+		document.getElementById("username").disabled = true;
+		document.getElementById("password").disabled = true;
+		document.getElementById("submitBtn").disabled = true;
+	}
+	}
+	}
+function clr(){
+	document.getElementById("form_id").reset();
+}
+</script>
+<form id="form_id" method="post" name="LoginForm">
+    <label for="username">User Name :</label>
+    <input type="text" name="username" id="username" />
+    <label for="password">Password :</label>
+    <input type="password" name="password" id="password" />
+    <input type="button" value="Login" id="submitBtn" onclick="validate()"/>
+    <input type="button" value="Clear" id="clrBtn" onclick="clr()"/>
+</form>
+<div class="valid">User Name : User123<br/>Password : Password123</div>
+</div>
+<!----------------------------- Model Label------------------>
+<style>
+.modal { display: none; position: fixed; z-index: 1; padding-top: 50px; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.4);}
+.modal-content { background-color:#fefefe; margin: auto; padding:0 0 40px 0; border: 1px solid #cfcfcf; width: 60%; }
+.close { color: #aaaaaa; float: right; font-size: 28px; font-weight: normal; margin:-8px 2px 0 0;}
+.close:hover, .close:focus { color: #000; text-decoration: none; cursor: pointer;}
+</style>
+<a href="#" class="link">Open</a>
+<div id="overlay" class="modal">
+  <div class="modal-content">
+   <span class="close">x</span>
+</div>
+</div>
+<script>
+  	var modal = document.getElementById('overlay');
+  	var btn = document.getElementsByClassName("link");
+  	var x = document.getElementsByClassName("close")[0];
+  		for (var i=0; i < btn.length; i++) {     
+  		btn[i].onclick = function () {
+  			modal.style.display = "block";
+  		}
+  	}
+  	x.onclick = function () {
+  		modal.style.display = "none";
+  	}
+  	window.onclick = function (event) {
+  		if (event.target == modal) {
+  			modal.style.display = "none";
+  		}
+  	}
+</script>
+<!------------------JQuery Modal-------------------->
+<script>
+$(document).ready(function() {
+   $(".overlay").click(function(){
+	   $(".modal").css({display: "block"});
+   }); 
+   $(".close").click(function(){
+	   $(".modal").css("display", "none");
+   });
+   $(document).on('click', function(e){
+	   if($(e.target).is($(".modal"))){
+		   $(".modal").css("display", "none");
+	   }
+   });
+});
+</script>
+</body>
+</html>
