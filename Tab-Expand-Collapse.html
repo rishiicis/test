@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Tab-Expand-Collapse</title>
+<style>
+.highlight { background: yellow;}
+.tab_content{ border:1px solid red; padding:20px; display:none;}
+.tab a{text-decoration:none; color:green;}
+.active a { color: red;}
+</style>
+<script src="js/jquery-1.10.2.js"></script><!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+</head>
+<body>
+<!-- ----------------------------------- Tab-------------------------------- -->
+<div class="tab">
+<ul>
+<li class="active"><a href="#tab1">Tab 1</a></li>
+<li><a href="#tab2"> Tab 2</a></li>
+<li><a href="#tab3">Tab 3</a></li>
+</ul>
+</div>
+<div id="tab1" class="tab_content" style="display:block;">Paragraphs 1</div>
+<div id="tab2" class="tab_content">Paragraphs 2</div>
+<div id="tab3" class="tab_content">Paragraphs 3</div>
+<script>
+$(document).ready(function(){
+	$(".tab li").click(function(){
+	$(".tab li").removeClass("active");
+	$(this).addClass("active");
+	$(".tab_content").hide();
+	var select_tab=$(this).find("a").attr("href");
+	$(select_tab).show();
+	});
+});
+</script>
+<!-- ----------------------------------- Expand Collapse-------------------------------- -->
+<h2 class="acc_trigger"><a href="#">Div 1</a></h2>
+<div class="acc_container">
+	<div class="block"> Div 1 content!</div>
+</div>
+<h2 class="acc_trigger"><a href="#">Div 2</a></h2>
+<div class="acc_container">
+	<div class="block">Div 2 Content</div>
+</div>
+<h2 class="acc_trigger"><a href="#">Div 3</a></h2>
+<div class="acc_container">
+	<div class="block">Div 3 Content</div>
+</div>
+<a href="#" class="acc_expand-all">Expand/Collapse All </a>
+<script>
+$(document).ready(function($) {
+$('.acc_container').hide();
+$('.acc_trigger').click(function(){
+	$('.acc_trigger').removeClass('active').next().slideUp(); //Remove all "active" state and slide up the immediate next container
+	$(this).toggleClass('active').next().slideDown();
+	return false; //Prevent the browser jump to the link anchor
+});
+
+$('.acc_expand-all').click(function(){
+	var all = $('.acc_trigger'),
+		active = all.filter('.active');
+	
+	if (all.length && all.length === active.length) {
+		// All open; close them
+		all.removeClass('active').next().slideUp();
+	}
+	else {
+		// At least some are closed, open all
+		all.not('.active').addClass('active').next().slideDown();
+	}
+
+	return false;
+});
+});
+</script>
+
+
+</body>
+</html>
