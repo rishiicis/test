@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CSS Dropdown Menu</title>
+<!--<link href="css/style_dropdown.css" rel="stylesheet" type="text/css" />-->
+<style>
+/* CSS Document */
+body{
+	margin:0px;
+	padding:0px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#333;
+	background:#ededed;
+	}
+*{
+	margin:0px;
+	padding:0px;
+	}
+.clr{
+	clear:both;
+	}
+img{
+	border:none;
+	}
+.header{
+	margin:0 auto;
+	padding:0px;
+	max-width:992px;
+	}
+.nav-menu{
+	margin-top:20px;
+	padding:0px;
+	display:table;
+	width:100%;
+	background:#FC0;
+	}
+.nav-menu ul{
+	list-style-type:none;
+	margin:0;
+	padding:0;
+	}
+.nav-menu ul li{
+	float:left;
+	}
+.nav-menu ul li a{
+	display: block;
+	color:#1668b3;
+	font-size:15px;
+	text-decoration: none;
+	padding:0px 0px 0px 5px;
+	text-align: center;
+	cursor: pointer;
+	}
+.nav-menu ul li a span{
+	display: block;
+	padding: 7px 13px 7px 8px;
+	}
+.nav-menu ul li a:hover, .nav-menu ul li a.active{
+	/*background:url(../images/left_nav.png) no-repeat top left #2282c5;*/
+	background:#2282c5;
+	}
+.nav-menu li a:hover span, .nav-menu ul li a.active span{
+	color: #FFFFFF;
+	/*background: url(../images/right_nav.png) no-repeat right top #2282c5;*/
+	background:#2282c5;
+	}
+.nav-menu ul li ul{
+	display: none;
+	list-style-type:none;
+	}
+.nav-menu ul li:hover ul{
+	display: block;
+	position:absolute;
+	padding:0;
+	margin:-1px 0px 0px 0px;
+	}
+.nav-menu ul li ul li{
+	float:none;
+	background:#2282c5;
+	border-bottom:1px solid #3a90cb;
+	width:219px;
+	}
+.nav-menu ul li ul li a{
+	display: block;
+	color:#FFFFFF;
+	font-size:12px;
+	text-decoration: none;
+	padding: 5px 0px 5px 10px;
+	margin:0px 0px 0px 0px;
+	text-align: left;
+	cursor: pointer;
+	height:15px;
+	}
+.nav-menu ul li ul li a:hover, .nav-menu ul li ul li a.active{
+	background:#0f4778;
+	color: #FFFFFF;
+	}
+/*.nav-menu ul li ul li:first-child{
+	background:url(../images/nav_2_top.png) no-repeat top left #2282c5;
+	color: #FFFFFF;
+	height:25px;
+	width:221px;
+	border-left:none;
+	border-right:none;
+	}
+.nav-menu ul li ul li:first-child a:hover, .nav-menu ul li ul li:first-child a.active{
+	background:url(../images/nav_2_active-top.png) no-repeat top left #0f4778;
+	color: #FFFFFF;
+	}
+.nav-menu ul li ul li:last-child{
+	background:url(../images/nav_2_bottom.png) no-repeat top left #2282c5;
+	color: #FFFFFF;
+	height:25px;
+	width:221px;
+	border:none;
+	}
+.nav-menu ul li ul li:last-child a:hover, .nav-menu ul li ul li:last-child a.active{
+	background:url(../images/nav_2_active-bottom.png) no-repeat top left #0f4778;
+	color: #FFFFFF;
+	}*/
+.mob_menu{ display:none}
+
+@media (max-width: 768px){
+.header{
+	width:100%;
+	}	
+.nav-menu ul li{
+	float:none;
+	border-bottom:1px solid red;
+	}
+.nav-menu ul li:hover ul{
+	position:static;
+	}
+.nav-menu ul li ul li{
+	width:100%;
+	}
+.nav-menu ul li ul li a{
+	text-align:center;
+}
+/********Mobile toggle button********************/
+.mob_menu{
+	display:block;
+    background-color: transparent;
+    border: 1px solid #333;
+    border-radius: 4px;
+    float: right;
+	margin:5px 15px 5px 0;
+    padding: 9px 10px;
+	cursor: pointer;
+}
+.mob_menu .icon-bar {
+	background-color: #fff;
+	margin-bottom:4px;
+    display: block;
+    height: 2px;
+    width: 22px;
+}
+
+}
+</style>
+</head>
+<body>
+<div class="header">
+<button class="mob_menu">
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+</button>
+<nav class="nav-menu">
+    <ul>
+        <li><a href="#" title="Home"><span>Home</span></a></li>
+        <li ><a  href="#" title="About us"><span>About us</span></a></li>
+        <li ><a class="active" href="#" title="Services"><span>Services</span></a>
+            <ul>
+                <li><a href="#" title="Services">abcd</a></li>
+                <li><a href="#" title="Services">aaaa</a></li>
+                <li><a href="#" title="Services">bbbb</a></li>
+                <li><a class="active" href="#" title="Services">cccc</a></li>
+            </ul>
+      </li>
+        <li><a href="#" title="Free resources"><span>Free resources</span></a></li>
+        <li><a href="#" title="Portfolio"><span>Portfolio</span></a></li>
+        <li><a href="#" title="Contact us"><span>Contact us</span></a></li>
+    </ul>
+ </nav>
+</div>
+</body>
+</html>
