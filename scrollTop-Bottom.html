@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>scroller</title>
+<style>
+.scrollToTop { background:green; box-shadow: 0 0 2px 2px #ccc; padding: 1em;text-decoration: none;}
+#ToBottom{top:50px; right:10px;position: fixed;}
+#backToTop{bottom:50px; right:10px;position: fixed;}
+</style>
+<script src="js/jquery-1.10.2.js"></script>
+</head>
+<body>
+<div style="height:1200px;">
+ABc
+</div>
+<div id="ToBottom"><a class="scrollToTop" href="#" >Down</a></div>
+<div id="backToTop" style="display: none;"><a class="scrollToTop" href="#">Top</a></div>
+<script>
+    $(document).ready(function () {
+        var offset = 50;
+        $(document).scroll(function () {
+            if ($(this).scrollTop() > offset) {
+                $('#backToTop').fadeIn();
+            } else {
+                $('#backToTop').fadeOut();
+            }
+        });
+        $('#backToTop').on('click',function () {
+            $('html, body').animate({ scrollTop: 0 }, 1000);
+            return false;
+        });
+		$('#ToBottom').on('click',function () {
+            $('html, body').animate({ scrollTop: '+=500px'}, 1000);
+            return false;
+        });
+    });
+</script>
+</body>
+</html>
