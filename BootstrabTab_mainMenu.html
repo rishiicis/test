@@ -1,10 +1,13 @@
 <!DOCTYPE HTML>
-<html>
-<head>
+<html><head>
 <meta charset="utf-8">
 <title>Bootstrap Menu || Tab</title>
 <link href="css/bootstrap.css" rel="stylesheet" type="text/css">
 <link href="css/additional.css" rel="stylesheet" type="text/css">
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet">-->
+<style>
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css");
+</style>
 <script src="js/jquery.min.js" type="text/javascript"></script>
 <script src="js/bootstrap.js" type="text/javascript"></script>
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -70,32 +73,34 @@ $('#myTabs a').click(function (e) {
 });
 </script>
 <style>
-div.cls {
-	background:#ededed;
-}
-.col-half-offset {
-	margin-left:4.166666667%
-}
-.navbar-inverse.top-nav {
-	min-height: auto;
-}
-.navbar-inverse.top-nav li a {
-	color:#fff;
-	font-weight:bold;
-}
-.navbar-inverse.top-nav li a:hover {
-	background-color:#0000FF;
-}
-.dropdown-menu {
-    background-color: #333;
-	}
-.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus{background-color:red;}
+/******************For top Fixed Nav Start******************************/
+.ManageTopNav{border-radius:0; margin-bottom:0px;}
+.navbar-inverse.ManageTopNav {min-height: auto; background-color:#090; border-color:#333;}
+.navbar-inverse.ManageTopNav li a {color:pink; font-weight:bold; outline:0;}
+.navbar-inverse.ManageTopNav li a:hover,.navbar-inverse.ManageTopNav li.active a,.navbar-inverse.ManageTopNav li.active a:hover {background-color:blue; color:red;}
+@media (min-width:768px){.navbar-inverse.ManageTopNav li a {color:pink; font-weight:bold; outline:0; padding:15px 30px;}}
+
+.dropdown-menu {background-color: #333; padding:0px;}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a{ color:#fff;}
+.navbar-nav .open .dropdown-menu > li > a, .navbar-nav .open .dropdown-menu .dropdown-header{padding: 5px 15px 5px 25px;}
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-inverse .navbar-nav .open .dropdown-menu > li > a:focus{background-color:blue; color:red;}
+.dropdown-menu li a:hover{color:red;}
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus{background-color:blue; color:black;}
+/******************For tab Start******************************/
+.manageTab li{border-left:1px solid #333;}
+.manageTab li:first-child{border-left:0;}
+.manageTab li a{border-radius:10px 10px 0 0; padding:5px 10px; outline:0; margin-right:0;}
+.manageTab li a:hover{ background-color:yellow;}
+.manageTab li.active a,.manageTab li.active a:hover, .manageTab li.active a:focus{background-color:red;}
+
 .nav-tabs > li.final > a{background-color:green; color:#fff;}
+/******************For tab End******************************/
+
 </style>
 </head>
 
 <body>
-<nav class="navbar navbar-default navbar-fixed-top navbar-inverse top-nav">
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse ManageTopNav">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
@@ -126,9 +131,10 @@ div.cls {
   </div>
   <!-- /.container-fluid --> 
 </nav>
+
 <section class="container" style="padding-top:60px;">
 <!-- Nav tabs -->
-  <ul class="nav nav-tabs" role="tablist" id="myTabs">
+  <ul class="nav nav-tabs manageTab" role="tablist" id="myTabs">
     <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">Home</a></li>
     <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">Profile</a></li>
     <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
@@ -201,6 +207,7 @@ div.cls {
       </div>
     </div>
   </div>
+ 
    
 <style>
 .btn-xlarge {
