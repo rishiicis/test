@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Bootstrap Menu || Tab</title>
+<link href="css/bootstrap.css" rel="stylesheet" type="text/css">
+<link href="css/additional.css" rel="stylesheet" type="text/css">
+<script src="js/jquery.min.js" type="text/javascript"></script>
+<script src="js/bootstrap.js" type="text/javascript"></script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+<body>
+<section class="container">
+<h3>Tool Tip</h3>
+<script>
+$(document).ready(function() {
+	$('[data-toggle="tooltip"]').tooltip();//for tooltip
+});
+</script>
+<div><a href="#" data-toggle="tooltip" title="Hello">Tool Tip</a></div>
+<div><a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!">Top</a></div>
+<div><a href="#" data-toggle="tooltip" data-placement="bottom" title="Hooray!">Bottom</a></div>
+<div><a href="#" data-toggle="tooltip" data-placement="left" title="Hooray!">Left</a></div>
+<div><a href="#" data-toggle="tooltip" data-placement="right" title="Hooray!">Right</a></div>
+<!------------------------------Tool Tip End------------------------>
+<h3>Expand Collapse</h3>
+<script>
+$(document).ready(function() {
+$('a.expandCollapse').on('click', function () {
+	$('.expandCollapse span').toggleClass("minusIcon");//for Expand Collapse
+});
+});
+</script>
+<style>
+.minusIcon:before{content: "\2212" !important;}
+</style>
+<div style="padding-top:20px;">
+<a href="#collapseExample" class="expandCollapse" data-toggle="collapse" aria-expanded="false" aria-
+
+controls="collapseExample"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Your Assignment Question 
+
+</a>
+</div>
+<div class="collapse" id="collapseExample">
+	<div class="well">Hello</div>
+</div>
+<!------------------------------expand Collapse End------------------------>
+<h3>alert Error</h3>
+<div class="alert alert-danger alert-dismissible">
+	<button type="button" class="close" data-dismiss="alert">x</button>
+	<p>Find Some Error</p>
+</div>
+<!------------------------------error Close End------------------------>
+
+
+
+
+
+</section>
+</body>
+</html>
