@@ -31,8 +31,8 @@ $(document).ready(function() {
 <h3>Expand Collapse</h3>
 <script>
 $(document).ready(function() {
-$('a.expandCollapse').on('click', function () {
-	$('.expandCollapse span').toggleClass("minusIcon");//for Expand Collapse
+$('.ExtraClass').on('click', function () {
+	$(this).find("span").toggleClass("minusIcon");//for Expand Collapse
 });
 });
 </script>
@@ -40,15 +40,16 @@ $('a.expandCollapse').on('click', function () {
 .minusIcon:before{content: "\2212" !important;}
 </style>
 <div style="padding-top:20px;">
-<a href="#collapseExample" class="expandCollapse" data-toggle="collapse" aria-expanded="false" aria-
-
-controls="collapseExample"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Your Assignment Question 
-
-</a>
+<a href="#collapseExample" class="ExtraClass" data-toggle="collapse"><span class="glyphicon glyphicon-plus-sign"></span>Your Assignment Question </a>
 </div>
 <div class="collapse" id="collapseExample">
 	<div class="well">Hello</div>
 </div>
+
+<div class="ExtraClass" data-toggle="collapse" data-target="#demo"><span class="glyphicon glyphicon-plus-sign"></span>Simple collapsible</div>
+<div id="demo" class="collapse">Lorem ipsum dolor sit amet, consectetur adipisicing elit</div>
+
+
 <!------------------------------expand Collapse End------------------------>
 <h3>alert Error</h3>
 <div class="alert alert-danger alert-dismissible">
