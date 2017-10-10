@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Jquery Modal</title>
+<script src="js/jquery-1.10.2.js"></script><!--<script src="https://code.jquery.com/jquery-1.10.2.js"></script>-->
+</head>
+<body>
+<!-- ----------------------------------- Modal-------------------------------- -->
+<script>
+$(document).ready(function() {
+   $("button").click(function(){
+		//var select_modal=$(this).find("a").attr("href");
+		var select_modal=$(this).data("target");
+		//alert(select_modal);
+	   $(select_modal).show();
+   }); 
+   $(".close").click(function(){
+	   $(".modal").hide();
+   });
+   $(document).on('click', function(e){
+	   if($(e.target).is($(".modal"))){
+		   $(".modal").hide();
+	   }
+   });
+});
+</script>
+<button class="overlay" data-target="#myModal1">Modal 1</button>
+<button class="overlay" data-target="#myModal2">Modal 2</button>
+<button class="overlay" data-target="#myModal3">Modal 3</button>
+<!--<div class="button"><a href="#myModal1">overlay 1</a><br></div>
+<div class="button"><a href="#myModal2">overlay 2</a><br></div>
+<div class="button"><a href="#myModal3">overlay 3</a><br></div>-->
+<!-- The Modal 1 -->
+<div id="myModal1" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..1</p>
+  </div>
+</div>
+<!-- The Modal 2 -->
+<div id="myModal2" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..2</p>
+  </div>
+</div>
+<!-- The Modal 3 -->
+<div id="myModal3" class="modal">
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..3</p>
+  </div>
+</div>
+
+
+<style>
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+</style>
+</body>
+</html>
