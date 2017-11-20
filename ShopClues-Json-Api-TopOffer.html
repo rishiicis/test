@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tech Test</title>
+    <link href="src/css/bootstrap.css" rel="stylesheet" type="text/css">
+    <link href="src/css/owl.carousel.css" rel="stylesheet" type="text/css">
+    <link href="src/css/additionalStyle.css" rel="stylesheet" type="text/css">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="mainHeader">
+        <div class="fix_header">
+            <img src="src/images/header-top.jpg" alt="top Header">
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="MainContainer">
+            <div class="row">
+                <div class="col-sm-3 col-md-2">
+                    <div class="leftPanal">
+                        <div class="sectionTtl">
+                            <h3>#SabseBadiSmile</h3>
+                        </div>
+                        <div class="leftMenu">
+                            <ul id="lstLevelTwo" class="lstNavS">
+                                <li><a href="javascript:void(0)" class="page-scroll current" jump="#pnlNavTopOffers">Top Offers</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavMensFashion">Men's Fashion</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavWomensFashion">Women's Fashion</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavKitchenDeals">Kitchen Deals</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavElectronicAutoAccessories">Electronic &amp; Auto Accessories</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavHomeDecor">Decor &amp; Furnishings</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavDiwaliGifting">Diwali Gifting</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavMobilesOtherElectronics">Mobiles &amp; Other Electronics</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavReNewGadgets">Re-New Gadgets</a></li>
+                                <li><a href="javascript:void(0)" class="page-scroll" jump="#pnlNavFeaturedDeals">Featured Deals</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-9 col-md-10">
+                    <div class="rightPanal">
+                        <div class="txtHeading"><span>Top Offer</span></div>
+                        <div id="pnlTopOffer">
+                            <ul id="ulItemList" class="owl-carousel owl-theme topOffer">
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <script src="src/js/jquery-3.2.1.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/owl.carousel.js"></script>
+    <script type="text/javascript">
+        String.format = function () {
+            var s = arguments[0];
+            for (var i = 0; i < arguments.length - 1; i++) {
+                var reg = new RegExp("\\{" + i + "\\}", "gm");
+                s = s.replace(reg, arguments[i + 1]);
+            }
+            return s;
+        };
+        if (typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function () {
+                return this.replace(/^\s+|\s+$/g, '');
+            };
+        };
+        $(document).ready(function () {
+            var apiPath = 'http://api.shopclues.com/api/v11/new_deals?key=d12121c70dda5edfgd1df6633fdb36c0&gid=7820';
+            (function () {
+                var itemTemplate = ' <li class="item"><a href="#" class="dProducts"> <img src="{0}"> <i></i> <span> <span>Rs.{1}</span> <span>Rs.{2}</span> </span> <span>{3}% Off</span> <span>{4}</span> </a> <span class="btn-add"><a href="#">Add to cart</a></span> </li>';
+                $.getJSON(apiPath, function (data) {
+                    $.each(data, function (key, item) {
+                        var itemHtml = String.format(itemTemplate, item.banner_url, item.product_list_price, item.product_price, item.percentage, item.display_name);
+                        $(itemHtml).appendTo("#ulItemList");
+                    });
+                    $('.owl-carousel').owlCarousel({
+                        loop: true,
+                        margin: 10,
+                        responsiveClass: true,
+                        responsive: {
+                            0: {
+                                items: 1,
+                                nav: true,
+                                loop: false,
+								slideBy: 1
+                            },
+                            600: {
+                                items: 3,
+                                nav: true,
+                                loop: false,
+								slideBy: 3
+                            },
+                            1000: {
+                                items: 5,
+                                nav: true,
+                                loop: false,
+								slideBy: 5,
+                                margin: 15
+                            }
+                        }
+                    });
+                })
+                    .fail(function () {
+                        console.log("error");
+                    });
+
+            })();
+        });
+    </script>
+</body>
+
+</html>
