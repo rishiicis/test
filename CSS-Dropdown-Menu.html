@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CSS Dropdown Menu</title>
 <!--<link href="css/style_dropdown.css" rel="stylesheet" type="text/css" />-->
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".mob_menu").click(function() {
+        $(".nav-menu").toggleClass("showMenu");
+    });
+});
+</script>
 <style>
 /* CSS Document */
 body{
@@ -12,7 +20,7 @@ body{
 	padding:0px;
 	font-family:Arial, Helvetica, sans-serif;
 	color:#333;
-	background:#ededed;
+	background:#fff;
 	}
 *{
 	margin:0px;
@@ -87,7 +95,7 @@ img{
 	color:#FFFFFF;
 	font-size:12px;
 	text-decoration: none;
-	padding: 5px 0px 5px 10px;
+	padding: 5px 0px 5px 15px;
 	margin:0px 0px 0px 0px;
 	text-align: left;
 	cursor: pointer;
@@ -121,8 +129,13 @@ img{
 	color: #FFFFFF;
 	}*/
 .mob_menu{ display:none}
-
 @media (max-width: 768px){
+.nav-menu{
+	display:none;
+}
+.showMenu{
+	display:block;
+}
 .header{
 	width:100%;
 	}	
@@ -136,6 +149,9 @@ img{
 .nav-menu ul li ul li{
 	width:100%;
 	}
+.nav-menu ul li a{
+	text-align:left;
+}
 .nav-menu ul li ul li a{
 	text-align:center;
 }
@@ -147,17 +163,19 @@ img{
     border-radius: 4px;
     float: right;
 	margin:5px 15px 5px 0;
-    padding: 9px 10px;
+    padding: 9px 10px 6px 10px;
 	cursor: pointer;
 }
 .mob_menu .icon-bar {
-	background-color: #fff;
+	background-color: #333;
 	margin-bottom:4px;
     display: block;
     height: 2px;
     width: 22px;
 }
-
+.nav-menu ul li ul li a{
+	text-align:left;
+}
 }
 </style>
 </head>
@@ -168,21 +186,22 @@ img{
     <span class="icon-bar"></span>
     <span class="icon-bar"></span>
 </button>
+<div class="clr"></div>
 <nav class="nav-menu">
     <ul>
-        <li><a href="#" title="Home"><span>Home</span></a></li>
-        <li ><a  href="#" title="About us"><span>About us</span></a></li>
-        <li ><a class="active" href="#" title="Services"><span>Services</span></a>
+        <li><a href="#"><span>Home</span></a></li>
+        <li><a  href="#"><span>About us</span></a></li>
+        <li><a class="active" href="#" title="Services"><span>Services</span></a>
             <ul>
-                <li><a href="#" title="Services">abcd</a></li>
-                <li><a href="#" title="Services">aaaa</a></li>
-                <li><a href="#" title="Services">bbbb</a></li>
-                <li><a class="active" href="#" title="Services">cccc</a></li>
+                <li><a href="#">abcd</a></li>
+                <li><a href="#">aaaa</a></li>
+                <li><a href="#">bbbb</a></li>
+                <li><a class="active" href="#">cccc</a></li>
             </ul>
       </li>
-        <li><a href="#" title="Free resources"><span>Free resources</span></a></li>
-        <li><a href="#" title="Portfolio"><span>Portfolio</span></a></li>
-        <li><a href="#" title="Contact us"><span>Contact us</span></a></li>
+        <li><a href="#"><span>Free resources</span></a></li>
+        <li><a href="#"><span>Portfolio</span></a></li>
+        <li><a href="#"><span>Contact us</span></a></li>
     </ul>
  </nav>
 </div>
