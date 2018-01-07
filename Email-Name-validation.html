@@ -8,18 +8,20 @@
 <body>
 <script>
 function Fvalidate() {
-    var x = document.forms["LoginForm"]["email"].value;
-    var y = document.forms["LoginForm"]["name"].value;
-    var F_at = x.indexOf("@");
-    var F_dot = x.lastIndexOf(".");
-    if(y.length < 2){
-   		alert("Fill Name");
-    }
-    else if (F_at<1 || F_dot<F_at+2 || F_dot+2>=x.length) {
-		alert("Not a valid e-mail address");
-    }
+    //var getEmail = document.forms["LoginForm"]["email"];
+    //var getName = document.forms["LoginForm"]["name"].value;
+    var getEmail = document.getElementById("Femail");
+    var getName = document.getElementById("Fname").value;
+	var checkCondition = /^([a-zA-Z0-9\_\.\-]{3,4})+\@(([a-zA-Z0-9\.\-]{2,4})+\.)+([a-zA-Z0-9]{2,4})+$/;
+	if(getName.length < 2){
+		alert("Fill Name");		
+	}
+	else if(!checkCondition.test(getEmail.value)){
+    	alert("Fill Correct Email");
+      }
 	else{
 		alert("Form Submit Successfully");
+		//window.location = "animate-Modal.html";
 	}
 	return false;
 }
@@ -30,23 +32,20 @@ function clr(){
 <div style="max-width:800px; margin:auto;">
 <h2>Email and Name atleast 2char validation</h2>
 <div id="getN"></div>
-<form method="post" name="LoginForm" id="form_id" onSubmit="return Fvalidate();">
-<div class="row">
-    <label for="Fname">Name</label>
-    <input type="text" name="name" id="Fname"/>
-    <!--<input type="text" name="name" id="Fname" pattern=".{3,10}"/>-->
-</div>
-<div class="row">
-    <label for="Femail">Email</label>
-    <input type="email" name="email" id="Femail"/>
-</div>
-<div class="row">
-    <button type="submit">Submit</button>
-</div>
-<!--<button onclick="Fvalidate()">Submit</button>
-<button onclick="clr()">Reset</button>
-<input type="button" value="Submit" onclick="Fvalidate()"/>
-<input type="button" value="Reset" onclick="clr()"/>-->
+<form method="post" name="LoginForm" id="form_id">
+    <div class="row">
+        <label for="Fname">Name</label>
+        <input type="text" name="name" id="Fname"/>
+        <!--<input type="text" name="name" id="Fname" pattern=".{3,10}"/>-->
+    </div>
+    <div class="row">
+        <label for="Femail">Email</label>
+        <input type="email" name="email" id="Femail"/>
+    </div>
+    <div class="row">
+        <button type="button" onclick="Fvalidate()">Submit</button>
+        <button type="button" onclick="clr()">Reset</button>
+    </div>
 </form>
 </div>
 </body>
