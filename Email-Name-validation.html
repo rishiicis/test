@@ -12,11 +12,13 @@ function Fvalidate() {
     //var getName = document.forms["LoginForm"]["name"].value;
     var getEmail = document.getElementById("Femail");
     var getName = document.getElementById("Fname").value;
-	var checkCondition = /^([a-zA-Z0-9\_\.\-]{3,4})+\@(([a-zA-Z0-9\.\-]{2,4})+\.)+([a-zA-Z0-9]{2,4})+$/;
-	if(getName.length < 2){
+	var checkEmail = /^([a-zA-Z0-9\_\.\-]{3,4})+\@(([a-zA-Z0-9\.\-]{2,4})+\.)+([a-zA-Z0-9]{2,4})+$/;
+	var checkName = /^([a-zA-Z\ ]{3})+$/;
+	//if(getName.length < 2){
+	if(!checkName.test(getName)){
 		alert("Fill Name");		
 	}
-	else if(!checkCondition.test(getEmail.value)){
+	else if(!checkEmail.test(getEmail.value)){
     	alert("Fill Correct Email");
       }
 	else{
