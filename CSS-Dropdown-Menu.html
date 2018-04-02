@@ -5,14 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>CSS Dropdown Menu</title>
 <!--<link href="css/style_dropdown.css" rel="stylesheet" type="text/css" />-->
-<script src="js/jquery-3.2.1.min.js"></script>
-<script>
-$(document).ready(function() {
-    $(".mob_menu").click(function() {
-        $(".nav-menu").toggleClass("showMenu");
-    });
-});
-</script>
 <style>
 /* CSS Document */
 body{
@@ -32,17 +24,30 @@ body{
 img{
 	border:none;
 	}
+.logo{
+	max-width:180px;
+	float:left;
+	margin:10px 0 10px 10px;
+}
+.logo img{
+	width:80%;
+}
 .header{
 	margin:0 auto;
 	padding:0px;
 	max-width:992px;
 	}
+.topWrap{
+	width:100%;
+	display:table;
+}
 .nav-menu{
 	margin-top:20px;
 	padding:0px;
 	display:table;
-	width:100%;
+	max-width:100%;
 	background:#FC0;
+	float:right;
 	}
 .nav-menu ul{
 	list-style-type:none;
@@ -54,24 +59,14 @@ img{
 	}
 .nav-menu ul li a{
 	display: block;
-	color:#1668b3;
+	color:#fff;
 	font-size:15px;
 	text-decoration: none;
-	padding:0px 0px 0px 5px;
 	text-align: center;
 	cursor: pointer;
-	}
-.nav-menu ul li a span{
-	display: block;
-	padding: 7px 13px 7px 8px;
+	padding: 7px 13px 7px 13px;
 	}
 .nav-menu ul li a:hover, .nav-menu ul li a.active{
-	/*background:url(../images/left_nav.png) no-repeat top left #2282c5;*/
-	background:#2282c5;
-	}
-.nav-menu li a:hover span, .nav-menu ul li a.active span{
-	color: #FFFFFF;
-	/*background: url(../images/right_nav.png) no-repeat right top #2282c5;*/
 	background:#2282c5;
 	}
 .nav-menu ul li ul{
@@ -129,9 +124,15 @@ img{
 	color: #FFFFFF;
 	}*/
 .mob_menu{ display:none}
-@media (max-width: 768px){
+@media (max-width: 767px){
 .nav-menu{
+	margin-top:0;
 	display:none;
+	width:100%;
+	z-index:2;
+    position:absolute;
+    right:-100%;
+	top:80px;	
 }
 .showMenu{
 	display:block;
@@ -153,7 +154,7 @@ img{
 	text-align:left;
 }
 .nav-menu ul li ul li a{
-	text-align:center;
+	text-align:left;
 }
 /********Mobile toggle button********************/
 .mob_menu{
@@ -162,7 +163,7 @@ img{
     border: 1px solid #333;
     border-radius: 4px;
     float: right;
-	margin:5px 15px 5px 0;
+	margin:15px 15px 5px 0;
     padding: 9px 10px 6px 10px;
 	cursor: pointer;
 }
@@ -173,25 +174,34 @@ img{
     height: 2px;
     width: 22px;
 }
-.nav-menu ul li ul li a{
-	text-align:left;
+.manageMenu .top-bar {
+  transform: rotate(45deg);
+  transform-origin: 10% 10%;
+}
+.manageMenu .middle-bar {
+  opacity: 0;
+}
+.manageMenu .bottom-bar {
+  transform: rotate(-45deg);
+  transform-origin: 10% 90%;
 }
 }
 </style>
 </head>
 <body>
 <div class="header">
+<div class="topWrap">
+<div class="logo"><a href="#"><img src="image/logo.png"></a></div>
 <button class="mob_menu">
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
+    <span class="icon-bar top-bar"></span>
+    <span class="icon-bar middle-bar"></span>
+    <span class="icon-bar bottom-bar"></span>
 </button>
-<div class="clr"></div>
 <nav class="nav-menu">
     <ul>
-        <li><a href="#"><span>Home</span></a></li>
-        <li><a  href="#"><span>About us</span></a></li>
-        <li><a class="active" href="#" title="Services"><span>Services</span></a>
+        <li><a href="#">Home</a></li>
+        <li><a  href="#">About us</a></li>
+        <li><a class="active" href="#" title="Services">Services</a>
             <ul>
                 <li><a href="#">abcd</a></li>
                 <li><a href="#">aaaa</a></li>
@@ -199,11 +209,34 @@ img{
                 <li><a class="active" href="#">cccc</a></li>
             </ul>
       </li>
-        <li><a href="#"><span>Free resources</span></a></li>
-        <li><a href="#"><span>Portfolio</span></a></li>
-        <li><a href="#"><span>Contact us</span></a></li>
+        <li><a href="#">Free resources</a></li>
+        <li><a href="#">Portfolio</a></li>
+        <li><a href="#">Contact us</a></li>
     </ul>
  </nav>
+ 
+ </div>
 </div>
+<script src="js/jquery-3.2.1.min.js"></script>
+<script>
+$(document).ready(function() {
+    //$(".mob_menu").click(function() {
+//		$(this).toggleClass("manageMenu");
+//        $(".nav-menu").toggleClass("showMenu");
+//    });
+// to apply this remove position absolute from mobile menu .nav-menu{
+});
+$(document).ready(function(){
+    $('.mob_menu').click(function(){
+	$(this).toggleClass("manageMenu");
+    var hidden = $('.nav-menu');
+    if (hidden.hasClass('showMenu')){
+        hidden.animate({right:"-100%"}, "slow").removeClass('showMenu');
+    } else {
+        hidden.animate({right:"0px"}, "slow").addClass('showMenu');
+    }
+    });
+});
+</script>
 </body>
 </html>
