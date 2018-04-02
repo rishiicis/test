@@ -231,9 +231,9 @@ $(document).ready(function(){
 	$(this).toggleClass("manageMenu");
     var hidden = $('.nav-menu');
     if (hidden.hasClass('showMenu')){
-        hidden.animate({right:"-100%"}, "slow").removeClass('showMenu');
+        hidden.removeClass('showMenu').animate({right:"-100%"}, "slow");
     } else {
-        hidden.animate({right:"0px"}, "slow").addClass('showMenu');
+        hidden.addClass('showMenu').animate({right:"0px"}, "slow");
     }
     });
 });
