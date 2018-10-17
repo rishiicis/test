@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>custom-toggle-button</title>
+</head>
+
+<body>
+<style>
+.switch-btn-wrap{
+    padding-top: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.switch__input {
+    display: none;
+}
+.switch__label {
+    position: relative;
+    display: inline-block;
+    width: 52px;
+    height: 22px;
+    margin: 0;
+    border: 1px solid #777;
+    border-radius: 26px; 
+}
+.switch__label::before {
+    content: '';
+	position: absolute;
+    z-index: 1;
+    top: 3px;
+    left: 2px;
+    width: 16px;
+    height: 16px;
+    transition: all .5s;
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    transform-origin: left top;
+    border-radius: 50%;
+    background: #999;
+    padding: 0px 0px 0px 0px; 
+}
+.switch__label::after {
+    content: 'Off';
+	position: absolute;
+	top: 4px;
+    font-size: 11px;
+    color: #999999;
+    text-transform: uppercase;
+    -webkit-transform: translateX(21px);
+    -ms-transform: translateX(21px);
+    transform: translateX(21px);
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
+    transform-origin: left top;
+} 
+.switch__input:checked + .switch__label{
+    border: 1px solid #f00;
+}
+.switch__input:checked + .switch__label:before {
+    -webkit-transform: translateX(32px);
+    -ms-transform: translateX(32px);
+    transform: translateX(32px);
+    background-color: #f00;
+}
+.switch__input:checked + .switch__label:after {
+    content: 'On';
+    -webkit-transform: translateX(3px);
+    -ms-transform: translateX(3px);
+    transform: translateX(3px);
+    color: #f00;
+    padding-left: 5px;
+}
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+    .switch__label:after {
+        /* IE10+ CSS styles go here */
+        padding-left: 2px; 
+    }
+}
+</style>
+<div class="switch-btn-wrap">
+    <input id="admin-switch" class="switch switch__input" type="checkbox"><label for="admin-switch" class="switch switch__label"></label>
+</div>
+</body>
+</html>
