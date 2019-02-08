@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.QA-wrap { 
+    position:relative;
+}
+.list {
+    display:none; 
+}
+.show {
+    display: none; 
+}
+.hide:target + .show {
+    display: block; 
+}
+.hide:target {
+    display: none; 
+}
+.hide:target ~ .list {
+    display:block; 
+}
+.hide, .show {
+	position:absolute;
+    top:-5px;
+	width: 30px;
+	height: 30px;
+    border-radius:30px;
+	font-size: 20px;
+	color: #fff;
+	text-align: center;
+	text-decoration: none;
+	background: #666;
+}
+.hide:hover, .show:hover {
+	text-decoration: none;
+}
+.question {
+	margin:15px 0 25px 40px;
+}
+</style>
+</head>
+<body>
+<h1>CSS collapse expand div for single question</h1>
+<div class="QA-wrap">
+    <a href="#hide1" class="hide" id="hide1">+</a>
+    <a href="#show1" class="show" id="show1">-</a>
+    <div class="question">Question Question Question Question Question Question Question Question Question Question Question?</div>
+  	<div class="list">
+    	<p>Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer Answer </p>
+  	</div>
+</div>
+
+</body>
+</html>
