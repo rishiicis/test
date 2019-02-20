@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Page Title</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+<style>
+div{
+    margin-bottom: 10px;
+}
+.video-wrap {
+	position: relative;
+	padding-bottom: 56%;
+	padding-top: 15px;
+	height: 0;
+}
+.video-wrap .responsive-iframe {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+}
+</style>
+</head>
+<body>
+<!----Iframe Responsive 16*9 by Custom css-->
+<div class="video-wrap">
+<iframe class="responsive-iframe" src="https://www.youtube.com/embed/qJn1iZ5EcmE" frameborder="0"></iframe>
+</div>
+
+<!----Iframe Responsive 16*9 by  Bootstrap-->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qJn1iZ5EcmE" frameborder="0"></iframe>
+</div>
+
+<!-- 16:9 aspect ratio -->
+<div class="embed-responsive embed-responsive-16by9">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qJn1iZ5EcmE"></iframe>
+</div>
+
+<!-- 4:3 aspect ratio -->
+<div class="embed-responsive embed-responsive-4by3">
+  <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/qJn1iZ5EcmE"></iframe>
+</div>
+
+</body>
+</html>
