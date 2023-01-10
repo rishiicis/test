@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>increase Decrease and reset font</title>
+  <style>
+  html {
+    font-size: 16px;
+  }
+  body {
+    padding: 20px;
+    font-size: 1rem;
+    font-family: Helvetica;
+  }
+  p {
+    font-size: 1rem;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .inc-dec-btn-wrap {
+    display: flex;
+  }
+  button {
+    background: #0084ff;
+    border: none;
+    border-radius: 5px;
+    outline: 0;
+    padding: 8px 14px;
+    font-size: 16px;
+    color: #fff;
+    margin-right: 5px;
+  }
+  </style>
+</head>
+<body>
+  <div class="demo">
+    <div class="inc-dec-btn-wrap">
+      <button class="decrease">A-</button>
+      <button class="resetMe">A</button>
+      <button class="increase">A+</button>
+    </div>
+    <h1>This is the header</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate quaerat molestiae mollitia similique minima
+      laboriosam commodi, praesentium soluta! Sapiente quia a tenetur quo officiis magni, placeat facilis sint
+      distinctio temporibus, nesciunt labore, quae alias ipsum ut. Minus cupiditate ad quibusdam. Est, dolore. Incidunt
+      dolorum esse doloremque similique! Expedita, alias dolorum. Eius id amet delectus repellat corporis distinctio
+      doloribus, ea assumenda beatae praesentium nemo. Perspiciatis aliquid nemo nisi fuga totam? Unde tempora, esse et
+      assumenda quae, enim facilis odit quas consequatur, exercitationem aspernatur hic! Temporibus ducimus amet
+      laboriosam esse quasi dolore libero officiis cum voluptatum praesentium. Delectus iure tempora exercitationem
+      obcaecati.</p>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      var originalSize = $('html').css('font-size');
+      var increaseCounter = 0;
+      var decreaseCounter = 0;
+      // reset
+      $(".resetMe").click(function() {
+        $('html').css('font-size', originalSize);
+        increaseCounter = 0;
+        decreaseCounter = 0;
+      });
+
+      // Increase Font Size
+      $(".increase").click(function() {
+        increaseCounter += 1;
+        if (increaseCounter == 1) {
+          var biggerSize = parseFloat(originalSize) * 1.1;
+          $('html').css('font-size', biggerSize);
+        }
+        else if(increaseCounter <= 2){
+          var currentSize = $('html').css('font-size');
+          var biggerSize = parseFloat(currentSize) * 1.1;
+          $('html').css('font-size', biggerSize);
+        }
+        decreaseCounter = 0;
+      });
+
+      // Decrease Font Size
+      $(".decrease").click(function() {
+        decreaseCounter += 1;
+        if (decreaseCounter == 1) {
+          var decreasedSize = parseFloat(originalSize) * 0.9;
+          $('html').css('font-size', decreasedSize);
+        }
+        else if (decreaseCounter <= 2) {
+          var currentSize = $('html').css('font-size');
+          var decreasedSize = parseFloat(currentSize) * 0.9;
+          $('html').css('font-size', decreasedSize);
+        }
+        increaseCounter = 0;
+      });
+      
+    });
+  </script>
+</body>
+</html>
